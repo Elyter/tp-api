@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Put, Param, Delete, UseGuards, ParseIntPipe } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBearerAuth } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
 import { Product } from './product.entity';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -14,6 +14,7 @@ import { UseInterceptors } from '@nestjs/common';
 @ApiTags('products')
 @Controller('products')
 @UseInterceptors(LoggingInterceptor)
+@ApiBearerAuth('JWT')
 export class ProductsController {
   constructor(
     private readonly productsService: ProductsService,

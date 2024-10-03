@@ -1,10 +1,11 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { SalesService } from './sales.service';
 import { Sale } from './sale.entity';
 import { CreateSaleDto } from './dto/create-sale.dto';
 
 @ApiTags('sales')
+@ApiBearerAuth('JWT')
 @Controller('sales')
 export class SalesController {
   constructor(private readonly salesService: SalesService) {}

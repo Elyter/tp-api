@@ -23,6 +23,10 @@ async function bootstrap() {
     .addTag('products')
     .addTag('sales')
     .addTag('analytics')
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'JWT',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   document.paths['/products/{id}'].get.parameters = [
