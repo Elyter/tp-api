@@ -21,7 +21,11 @@ export class SalesService {
       throw new Error('Quantité insuffisante en stock');
     }
 
-    const sale = this.salesRepository.create(createSaleDto);
+    const sale = this.salesRepository.create({
+      ...createSaleDto,
+      date: new Date(), // Ajoutez cette ligne pour définir la date actuelle
+      product: product
+    });
     await this.salesRepository.save(sale);
 
     // Mise à jour du stock

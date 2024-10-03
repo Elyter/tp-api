@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { BadRequestException } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,8 +12,10 @@ async function bootstrap() {
     forbidNonWhitelisted: true,
     skipMissingProperties: false,
     forbidUnknownValues: true,
-    transformOptions: {
-      enableImplicitConversion: true,
+    validationError: { target: false, value: true },
+    exceptionFactory: (errors) => {
+      console.log('Erreurs de validation:', JSON.stringify(errors, null, 2));
+      return new BadRequestException(errors);
     },
   }));
 

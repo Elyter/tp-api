@@ -7,6 +7,7 @@ import { AnalyticsModule } from './analytics/analytics.module';
 import { ThirdPartyApiModule } from './third-party-api/third-party-api.module';
 import { AuthModule } from './auth/auth.module';
 import { CronModule } from './cron/cron.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { CronModule } from './cron/cron.module';
     ThirdPartyApiModule,
     AuthModule,
     CronModule,
+    UsersModule,
   ],
 })
 export class AppModule {}

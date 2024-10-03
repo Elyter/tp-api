@@ -17,7 +17,7 @@ export class Sale {
   quantity: number;
 
   @Column()
-  @ApiProperty({ description: 'The date of the sale' })
+  @ApiProperty({ description: 'La date de la vente' })
   date: Date;
 
 }
