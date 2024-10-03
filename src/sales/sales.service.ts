@@ -1,6 +1,6 @@
 import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, MoreThanOrEqual } from 'typeorm';
+import { Repository, MoreThanOrEqual, Between } from 'typeorm';
 import { Sale } from './sale.entity';
 import { CreateSaleDto } from './dto/create-sale.dto';
 import { ProductsService } from '../products/products.service';
