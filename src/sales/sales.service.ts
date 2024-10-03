@@ -1,10 +1,9 @@
 import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, MoreThanOrEqual, Between } from 'typeorm';
 import { Sale } from './sale.entity';
-import { ProductsService } from '../products/products.service';
 import { CreateSaleDto } from './dto/create-sale.dto';
-import { MoreThanOrEqual, Between } from 'typeorm';
+import { ProductsService } from '../products/products.service';
 
 @Injectable()
 export class SalesService {
@@ -50,7 +49,6 @@ export class SalesService {
   }
 
   async generateWeeklyReport() {
-    // Implémentez la logique de génération de rapport ici
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
@@ -59,7 +57,6 @@ export class SalesService {
       relations: ['product'],
     });
 
-    // Calculez les statistiques nécessaires pour le rapport
     const totalSales = sales.length;
     const totalRevenue = sales.reduce((sum, sale) => sum + sale.quantity * sale.product.price, 0);
 
